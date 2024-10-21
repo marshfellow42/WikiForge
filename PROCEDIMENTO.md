@@ -18,7 +18,10 @@ Vamos seguir um passo-a-passo pra não dar erro no futuro
 ## Roteiro do sprint
 
 1. Criar uma meta no GitHub Issues com o nome "Sprint 1"
-2. Colocar todos os issues dentro dessa meta até o fim dessa sprint
-3. Toda semana fazer um Sprint Review falando o que todo mundo fez nessa sprint
-4. Usar o Google Sheets para fazer o Gráfico Burndown da sprint atual
-5. Repetir tudo na próxima sprint, mas com algumas alterações caso alguém não tenha feito muita coisa
+2. Criar as User Stories e as tasks provenientes dessas histórias
+3. Transformar as tasks em issues
+4. Colocar todos os issues dentro dessa meta até o fim dessa sprint
+5. Toda semana fazer um Sprint Review falando o que todo mundo fez nessa sprint
+6. Usar o Google Sheets para fazer o Gráfico Burndown da sprint atual
+7. Repetir tudo na próxima sprint, mas com algumas alterações caso alguém não tenha feito muita coisa
+   - Caso alguma task tenha sido incompleta na sprint passada, só remover da Sprint passada e colocar na Sprint atual
