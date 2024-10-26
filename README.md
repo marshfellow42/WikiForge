@@ -1,4 +1,8 @@
-# projeto-pp2
+# WikiForge
+
+Nosso template de wiki
+
+---
 
 Para saber por onde começar a contribuir para o projeto, cheque o guia [CONTRIBUIR](https://github.com/marshfellow42/projeto-pp2/blob/main/CONTRIBUIR.md)
 
