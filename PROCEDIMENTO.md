@@ -10,7 +10,7 @@ Tentaremos fazer uma Sprint Review toda semana, para ter algo para colocar nos s
 
 Vamos seguir um passo-a-passo pra não dar erro no futuro
 
-- [ ] Decidir a ideia do projeto entre os membros da equipe
+- [x] Decidir a ideia do projeto entre os membros da equipe
 - [ ] Decidir todo o funcionamento do website (desde rotas, tabelas no banco de dados, etc)
 - [ ] Fazer o design inicial do website por meio de um wireframe no papel
 - [ ] Implementar o website inteiro pelo Laravel (tentando manter o mais fiel possível ao conceito)
