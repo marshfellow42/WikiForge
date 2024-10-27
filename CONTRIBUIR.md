@@ -12,25 +12,15 @@ Ou, rode os [comandos](https://laravel.com/docs/11.x#installing-php) indicados p
 
 1. Faça o clone do projeto
 
-2. Abra o terminal e entre na pasta do projeto clonado
+2. Execute o arquivo para setup
 
 ```bash
-cd WikiForge
+./setup.sh
 ```
 
-3. Rode o comando abaixo para gerar o arquivo ```.env``` correto
+- No Windows você precisa fazer isso pelo Git Bash ou em outro terminal Unix
 
-```bash
-npm install && npm run build
-```
-
-4. Rode o comando abaixo para criar as tabelas no seu banco de dados local
-
-```bash
-php artisan migrate
-```
-
-5. Rode o comando abaixo para rodar o website por meio do localhost
+3. Depois de rodar o setup do website na sua máquina, rode esse comando abaixo para começar o website pelo localhost
 
 ```bash
 composer run dev
