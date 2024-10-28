@@ -10,7 +10,7 @@ Ou, rode os [comandos](https://laravel.com/docs/11.x#installing-php) indicados p
 
 ## Como testar o website localmente?
 
-1. Faça o clone do projeto
+1. Faça o clone do projeto e entre na pasta clonada
 
 2. Execute o arquivo para setup
 
