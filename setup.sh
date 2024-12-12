@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Executando composer update"
+composer update
+
 echo "Executando composer install"
 composer install
 
@@ -14,9 +17,6 @@ cp .env.example .env
 
 echo "Gerando API Key"
 php artisan key:generate
-
-echo "Criando um banco de dados SQL"
-touch database/database.sqlite
 
 echo "Criando tabelas no banco de dados local"
 php artisan migrate
