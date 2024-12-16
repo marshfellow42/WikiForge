@@ -22,5 +22,3 @@ Por fim, para executar o website, é só usar o comando abaixo
 ```bash
 composer run dev
 ```
-
-Para saber como vai ser o procedimento desse projeto, cheque o guia [PROCEDIMENTO](https://github.com/marshfellow42/projeto-pp2/blob/main/PROCEDIMENTO.md)
