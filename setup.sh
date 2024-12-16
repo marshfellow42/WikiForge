@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Executando composer self-update"
+composer self-update
+
 echo "Executando composer update"
 composer update
 
