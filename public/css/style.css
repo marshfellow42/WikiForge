@@ -1,3 +1,12 @@
 *{
     font-family: 'Roboto';
 }
+
+.msg-warning{
+    background-color: orange;
+    color: white;
+    margin-bottom: 0px;
+    border: 1px orangered;
+    padding: 10px;
+    text-align: center;
+}

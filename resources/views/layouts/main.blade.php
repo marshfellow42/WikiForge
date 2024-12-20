@@ -18,9 +18,9 @@
 <body>
 
 
-{{---
-    
-    
+    {{---
+
+
 Aqui na navbar, na parte de Ver Perfil, aqui o processo vai pegar o nickname do usuario logado,
 e em seguida irá redirecionar pra pagina de perfil daquela pessoa
     
@@ -61,6 +61,9 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                                 </div>
                             </a>
                         </li>
+                        <!-- 
+                        Se o usuario estiver logado...
+                        -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -70,6 +73,22 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                                     <hr class="dropdown-divider" />
                                 </li>
                                 <li><a class="dropdown-item" href="/">Logout</a></li>
+                            </ul>
+                        </li>
+
+                        <!--
+                        Caso o usuario nao esteja logado...
+                        -->
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/login">Entrar</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" href="/register">Criar Conta</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -82,7 +101,15 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
         </nav>
     </header>
 
-    @yield('content')
+    @if (session('msg-warning'))
+    <p class="msg-warning"> {{session('msg-warning')}} </p>
+    @endif
+
+    <div class="container-fluid">
+        <div class="row">
+            @yield('content')
+        </div>
+    </div>
 
     {{---JS do Bootstrap---}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

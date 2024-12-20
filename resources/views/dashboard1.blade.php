@@ -2,5 +2,4 @@
 @section('title', 'Pagina Inicial')
 @section('content')
 
-
 @endsection

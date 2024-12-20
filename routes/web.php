@@ -20,7 +20,24 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LoginController::class, 'index']);
-
 Route::get('/wiki/creator', [WikiController::class, 'create']);
+Route::get('/profile/{profile?}', [ProfileController::class, 'enter_profile']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 require __DIR__.'/auth.php';

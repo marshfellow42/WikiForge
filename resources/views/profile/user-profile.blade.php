@@ -14,8 +14,8 @@ Se a pessoa que esta acessando o perfil for a dona, entao aparecerá opções ex
 
 ---}}
 
-@if ($nickname != null)
-    <h1>perfil de {{$nickname}}</h1>
+@if ($profile != null)
+    <h1>perfil de {{$profile}}</h1>
 @endif
 
 @endsection
