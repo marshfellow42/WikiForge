@@ -20,6 +20,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Z3d0X\FilamentFabricator\FilamentFabricatorPlugin;
 use TomatoPHP\FilamentUsers\FilamentUsersPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 
 class AdminPanelProvider extends PanelProvider
 {

@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "awcodes/filament-tiptap-editor": "^3.4",
+        "bezhansalleh/filament-language-switch": "^3.1",
         "bezhansalleh/filament-shield": "^3.3",
         "charrafimed/global-search-modal": "^3.4",
         "filament/filament": "^3.2",

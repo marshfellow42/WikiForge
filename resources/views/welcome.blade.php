@@ -59,20 +59,27 @@
       </header>
 
       <main>
-        {{--
         <div class="container">
-            @foreach ($contents as $content)
-            <div class="my-3 col-md-3">
-                <div class="mb-4 card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $content->name }}</h5>
-                        <p>{{ $content->content }}</p>
+            @foreach ($pages as $page)
+                <div class="my-3 col-md-3">
+                    <div class="mb-4 card">
+                        <a href="{{ $page->slug }}" style="text-decoration: none; color: inherit;">
+                            @php
+                                $parsedData = json_decode($page->blocks, true);
+
+                                $parsedTitle = $parsedData[0]['data']['title'] ?? '';
+
+                                $subtitle = $parsedData[0]['data']['subtitle'] ?? '';
+                            @endphp
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $parsedTitle }}</h5>
+                                <p> {{ $subtitle }} </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
-        --}}
       </main>
     </body>
 </html>

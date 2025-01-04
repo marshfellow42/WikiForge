@@ -28,7 +28,7 @@ echo "Criando tabelas no banco de dados local"
 php artisan migrate
 
 echo "Otimizando o framework Filament"
-php artisan filament:optimize
+php artisan filament:optimize-clear
 
 echo "Processo concluído."
 read -p "Pressione [Enter] para continuar..."
