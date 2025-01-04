@@ -3,6 +3,9 @@
 echo "Executando composer self-update"
 composer self-update
 
+echo "Executando composer clear-cache"
+composer clear-cache
+
 echo "Executando composer update"
 composer update
 
@@ -23,6 +26,9 @@ php artisan key:generate
 
 echo "Criando tabelas no banco de dados local"
 php artisan migrate
+
+echo "Otimizando o framework Filament"
+php artisan filament:optimize
 
 echo "Processo concluído."
 read -p "Pressione [Enter] para continuar..."
