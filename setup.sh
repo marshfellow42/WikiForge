@@ -30,6 +30,9 @@ touch database/database.sqlite
 echo "Criando tabelas no banco de dados local"
 php artisan migrate
 
+echo "Linkar o storage com o public"
+php artisan storage:link
+
 echo "Otimizando o framework Filament"
 php artisan filament:optimize-clear
 
