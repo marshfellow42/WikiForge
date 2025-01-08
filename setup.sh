@@ -3,6 +3,9 @@
 echo "Executando composer self-update"
 composer self-update
 
+echo "Executando composer clear-cache"
+composer clear-cache
+
 echo "Executando composer update"
 composer update
 
@@ -20,6 +23,9 @@ cp .env.example .env
 
 echo "Gerando API Key"
 php artisan key:generate
+
+echo "Criar o banco de dados SQL"
+touch database/database.sqlite
 
 echo "Criando tabelas no banco de dados local"
 php artisan migrate
