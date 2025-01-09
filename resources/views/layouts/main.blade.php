@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+@php
+
+$data = session('user_data');
+
+@endphp
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,17 +70,20 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                         <!-- 
                         Se o usuario estiver logado...
                         -->
+                        @if (session()->has('user_data'))
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/profile/Kelwinkxps13">Ver Conta</a></li>
+                                <li><a class="dropdown-item" href="/profile/{{$data['nickname']}}">Ver Conta</a></li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
-                                <li><a class="dropdown-item" href="/">Logout</a></li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </li>
+                        @else
 
                         <!--
                         Caso o usuario nao esteja logado...
@@ -92,6 +101,7 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                             </ul>
                         </li>
                     </ul>
+                    @endif
                     <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Pesquisar</button>
@@ -103,6 +113,12 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
 
     @if (session('msg-warning'))
     <p class="msg-warning"> {{session('msg-warning')}} </p>
+    @endif
+    @if (session('msg-success'))
+    <p class="msg-success"> {{session('msg-success')}} </p>
+    @endif
+    @if (session('msg-danger'))
+    <p class="msg-danger"> {{session('msg-danger')}} </p>
     @endif
 
     <div class="container-fluid">

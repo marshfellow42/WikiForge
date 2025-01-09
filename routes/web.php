@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'makelogin']);
+Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/register', [LoginController::class, 'register']);
+Route::post('/register', [LoginController::class, 'store']);
 Route::get('/wiki/creator', [WikiController::class, 'create']);
 Route::get('/profile/{profile?}', [ProfileController::class, 'enter_profile']);
 
@@ -40,4 +45,4 @@ Route::get('/profile/{profile?}', [ProfileController::class, 'enter_profile']);
 
 
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
