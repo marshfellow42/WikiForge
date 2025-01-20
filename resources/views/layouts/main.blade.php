@@ -67,31 +67,24 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                                 </div>
                             </a>
                         </li>
-                        <!-- 
-                        Se o usuario estiver logado...
-                        -->
-                        @if (session()->has('user_data'))
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            @auth
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/profile/{{$data['nickname']}}">Ver Conta</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                                 <li>
-                                    <hr class="dropdown-divider" />
+                                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
                                 </li>
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
-                        </li>
-                        @else
 
-                        <!--
-                        Caso o usuario nao esteja logado...
-                        -->
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            @endauth
+                            @guest
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/login">Entrar</a></li>
                                 <li>
@@ -99,9 +92,9 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                                 </li>
                                 <li><a class="dropdown-item" href="/register">Criar Conta</a></li>
                             </ul>
+                            @endguest
                         </li>
                     </ul>
-                    @endif
                     <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Pesquisar</button>
