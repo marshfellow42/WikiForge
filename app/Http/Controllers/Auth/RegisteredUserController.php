@@ -47,6 +47,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('mainkkk', absolute: false));
+        return redirect(route('mainkkk', absolute: false))
+        ->with('msg-success', 'Usuário criado com sucesso!');;
     }
 }

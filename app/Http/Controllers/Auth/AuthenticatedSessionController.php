@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-# a
-
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -30,7 +28,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('mainkkk', absolute: false));
+        return redirect()->intended(route('mainkkk', absolute: false))
+        ->with('msg-success', 'Olá, ' . Auth::user()->nickname . '! Seja bem-vindo(a)!.');;
     }
 
     /**
@@ -44,6 +43,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('');
+        return redirect('')
+        ->with('msg-success', 'deslogado(a) com sucesso!');
     }
 }
