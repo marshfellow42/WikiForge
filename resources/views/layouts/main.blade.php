@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
 
 @php
 
@@ -15,7 +15,7 @@ $data = session('user_data');
     {{--- CSS do Google ---}}
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     {{--- CSS do Bootstrap ---}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     {{---CSS do Projeto---}}
     <link rel="stylesheet" href="/css/style.css">
 
@@ -29,20 +29,20 @@ $data = session('user_data');
 
 Aqui na navbar, na parte de Ver Perfil, aqui o processo vai pegar o nickname do usuario logado,
 e em seguida irá redirecionar pra pagina de perfil daquela pessoa
-    
-    
+
+
 ---}}
 
     <header>
-        <nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">WikiForge</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" >
+            <div class="container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" height="30px" width="30px">
+                <a class="navbar-brand ps-2" href="/">{{ config('app.name', 'Laravel') }}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse">
+                    <span class="pt-5 navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="mb-2 navbar-nav me-auto mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="/wiki/creator">Crie sua Wiki</a>
                         </li>
@@ -121,11 +121,10 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
     </div>
 
     {{---JS do Bootstrap---}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <footer>
-        <p style="text-align: center;">&copy; 2024 WikiForge. Todos os direitos reservados.</p>
+        <p style="text-align: center;">&copy; <?php echo date("Y"); ?> {{ config('app.name', 'Laravel') }}. Todos os direitos reservados.</p>
     </footer>
 </body>
 

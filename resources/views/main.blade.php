@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Pagina Inicial')
+@section('title', 'Página Inicial')
 @section('content')
 
 @auth
