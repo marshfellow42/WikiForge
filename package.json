@@ -17,6 +17,6 @@
         "vite": "^6.0"
     },
     "dependencies": {
-        "shiki": "^2.1.0"
+        "shiki": "^2.2.0"
     }
 }

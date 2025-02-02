@@ -26,3 +26,23 @@
     padding: 10px;
     text-align: center;
 }
+
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: transparent;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.sidebar a {
+    color: #adb5bd;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+    color: #fff;
+}

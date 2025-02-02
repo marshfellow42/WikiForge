@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class WikiController extends Controller
 {
     public function create(){
-        return view('wiki.creator');
+        $users = User::all();
+        return view('wiki.creator', compact('users'));
     }
 }

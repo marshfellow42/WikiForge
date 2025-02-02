@@ -9,10 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('nickname')->unique();
+        Schema::create('configurations', function (Blueprint $table) {
+            $table->id();
+            $table->string('key');
+            $table->string('value');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('nickname')->unique();
-        });
+        Schema::dropIfExists('configurations');
     }
 };

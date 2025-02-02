@@ -3,10 +3,17 @@
 @section('content')
 
 @auth
-    <h1>Olá, {{ Auth::user()->nickname }}</h1>
+    <h1 style="text-align: center">Olá, {{ Auth::user()->nickname }}</h1>
+{{--
+    <x-markdown>
+        {!! $markdown !!}
+    </x-markdown>
+--}}
+
 @endauth
+
 @guest
-    <h1>Olá, visitante!</h1>
+    <h1 style="text-align: center">Olá, visitante!</h1>
 @endguest
 
 @endsection
