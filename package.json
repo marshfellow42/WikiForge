@@ -17,6 +17,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
+        "@toast-ui/editor": "^3.2.2",
         "shiki": "^2.2.0"
     }
 }

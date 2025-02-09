@@ -25,7 +25,7 @@ estrutura do site de wiki's:
 - --}}
 
 @extends('layouts.main')
-@section('title', 'Criador')
+@section('title', 'Usuários')
 @section('content')
 
     <div class="mt-3 col-md-3">
@@ -39,28 +39,29 @@ estrutura do site de wiki's:
     <div class="mt-3 col-md-9">
         <div class="row">
             <div class="d-flex justify-content-between align-items-center">
-                <h1>Páginas</h1>
-                <div class="d-flex">
-                    <a href="/wiki/create_page" class="btn btn-primary" style="text-decoration: none">Criar uma Wiki</a>
-                </div>
+                <h1>Usuários</h1>
             </div>
         </div>
 
         <table class="table table-striped nowrap" style="width:100%" id="myTable">
             <thead>
                 <th> id </th>
-                <th> Título </th>
-                <th> Slug </th>
-                <th> Markdown </th>
+                <th> Nome </th>
+                <th> Apelido </th>
+                <th> Email </th>
+                <th> Senha </th>
+                <th> Privilégio </th>
                 <th> Ações </th>
             </thead>
             <tbody>
-                @foreach ($pages as $page)
+                @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->title }}</td>
-                        <td>{{ $user->slug }}</td>
-                        <td>{{ $user->markdown }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->nickname }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->password }}</td>
+                        <td>{{ $user->role }}</td>
 
                         <td>
                             <form action="editar_usuarios.php" method="post" style="display: inline;">
@@ -90,9 +91,11 @@ estrutura do site de wiki's:
 
             <tfoot>
                 <th> id </th>
-                <th> Título </th>
-                <th> Slug </th>
-                <th> Markdown </th>
+                <th> Nome </th>
+                <th> Apelido </th>
+                <th> Email </th>
+                <th> Senha </th>
+                <th> Privilégio </th>
                 <th> Ações </th>
             </tfoot>
 

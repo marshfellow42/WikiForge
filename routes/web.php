@@ -4,6 +4,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\WikiController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[MainController::class, 'check'])->name("mainkkk");
@@ -41,7 +42,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/wiki/info', [WikiController::class, 'show'])->middleware('auth');
 Route::get('/wiki/creator', [WikiController::class, 'create'])->middleware('auth');
+Route::get('/wiki/users', [WikiController::class, 'observe'])->middleware('auth');
+Route::get('/wiki/create_page', [WikiController::class, 'create_new_page'])->middleware('auth');
+
+Route::post('/wiki/save', [PageController::class, 'store'])->name('wiki.save');
 
 Route::get('/about', function () {
     return view('about');

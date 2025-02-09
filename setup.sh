@@ -30,5 +30,8 @@ touch database/database.sqlite
 echo "Criando tabelas no banco de dados local"
 php artisan migrate
 
+echo "Criando o admin no banco de dados local"
+php artisan db:seed
+
 echo "Processo concluído."
 read -p "Pressione [Enter] para continuar..."

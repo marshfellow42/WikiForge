@@ -15,7 +15,8 @@
     {{-- - CSS do Google - --}}
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     {{-- - CSS do Bootstrap - --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.1/css/buttons.bootstrap5.min.css">
@@ -51,7 +52,7 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                     <ul class="mb-2 navbar-nav me-auto mb-lg-0">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="/wiki/creator">Veja Wikis</a>
+                                <a class="nav-link" href="/wiki/creator">Dashboard</a>
                             </li>
                         @endauth
                         {{--
@@ -77,6 +78,9 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                                 <div class="bg-white d-flex align-items-center justify-content-center rounded-circle"
                                     style="width: 30px; height: 30px; overflow: hidden;">
                                     <x-bi-person-fill class="text-dark" />
+                                    {{--
+                                    @yield("profile_picture")
+                                    --}}
                                 </div>
                             </a>
                         </li>
@@ -92,6 +96,14 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                                         style="display: none;">
                                         @csrf
                                     </form>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
                                     <li>
                                         <a class="dropdown-item" href="#"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -143,9 +155,12 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
     </footer>
 
     {{-- -JS do Bootstrap- --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.bootstrap5.min.js"></script>
@@ -169,7 +184,7 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
             },
             stateSave: true,
             language: {
-                url:"https://cdn.datatables.net/plug-ins/2.2.1/i18n/pt-BR.json"
+                url: "https://cdn.datatables.net/plug-ins/2.2.1/i18n/pt-BR.json"
             }
         });
     </script>
