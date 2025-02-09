@@ -57,10 +57,10 @@ estrutura do site de wiki's:
             <tbody>
                 @foreach ($pages as $page)
                     <tr>
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->title }}</td>
-                        <td>{{ $user->slug }}</td>
-                        <td>{{ $user->markdown }}</td>
+                        <td>{{ $page->id }}</td>
+                        <td>{{ $page->title }}</td>
+                        <td>{{ $page->slug }}</td>
+                        <td>{{ $page->markdown }}</td>
 
                         <td>
                             <form action="editar_usuarios.php" method="post" style="display: inline;">

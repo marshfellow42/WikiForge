@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\MarkdownController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\WikiController;
 use App\Http\Controllers\PageController;
+use App\Models\Page;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[MainController::class, 'check'])->name("mainkkk");
@@ -52,5 +54,7 @@ Route::post('/wiki/save', [PageController::class, 'store'])->name('wiki.save');
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::get('/{slug}', [MarkdownController::class, 'show']);
 
 require __DIR__.'/auth.php';

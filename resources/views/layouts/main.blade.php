@@ -51,9 +51,11 @@ e em seguida irá redirecionar pra pagina de perfil daquela pessoa
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="mb-2 navbar-nav me-auto mb-lg-0">
                         @auth
-                            <li class="nav-item">
-                                <a class="nav-link" href="/wiki/creator">Dashboard</a>
-                            </li>
+                            @if (Auth::user()->role == 'admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/wiki/creator">Dashboard</a>
+                                </li>
+                            @endif
                         @endauth
                         {{--
                         @guest

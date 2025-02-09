@@ -9,6 +9,21 @@ use App\Models\User;
 
 class WikiController extends Controller
 {
+    /*
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            // Check if the user is authenticated and has 'admin' role
+            if (Auth::check() && Auth::user()->role == 'admin') {
+                return $next($request);
+            } else {
+                // If the user is not an admin, redirect with an error
+                return redirect('/')->with('error', 'Você não tem autorização para essa página');
+            }
+        });
+    }
+    */
+
     public function create()
     {
         $pages = Page::all();
@@ -18,7 +33,6 @@ class WikiController extends Controller
     public function show()
     {
         $user = Auth::user(); // Get the authenticated user
-
         $users = User::all();
 
         if ($user && $user->role == "admin") {

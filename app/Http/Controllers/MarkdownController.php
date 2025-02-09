@@ -3,35 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use Illuminate\Support\Str;
+use App\Models\Link; // Import the Link model
+use App\Models\Page;
 
 class MarkdownController extends Controller
 {
-    public function show()
+    public function show($slug) // Accept the slug parameter
     {
-        $markdown = <<<'MARKDOWN'
-        # This is a title
+        // Find the link based on the slug
+        $link = Page::where('slug', $slug)->first();
 
-        This is regular text with **bold font**
-
-        - This
-        - Is
-        - A List
-
-        Here is a [link](https://youtube.com/@Tuto1902)
-
-        And finally, some code
-
-        ```php
-        public function foo($bar) {
-            $foo = $bar;
-
-            echo $foo;
+        // If the slug is not found, return a 404 error
+        if (!$link) {
+            abort(404);
         }
-        ```
-        MARKDOWN;
-        
-        return view('main', ['markdown' => $markdown]);
+
+        // Pass the link data to the view
+        return view('wiki.markdown', ['link' => $link]);
     }
 }
