@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Página Inicial')
+@section('title', config('app.name', 'Página Inicial'))
 @section('content')
 
     @auth
@@ -16,18 +16,26 @@
         <h1 style="text-align: center">Olá, visitante!</h1>
     @endguest
 
-    <div class="px-5">
-        @foreach ($pages as $page)
-            <a href={{ $page->slug }} style="text-decoration: none">
-                <div class="card" style="width: 18rem;">
-                    {{-- <img src="..." class="card-img-top" alt="..."> --}}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $page->title }}</h5>
-                        <p class="card-text"></p>
+    <div class="container px-5">
+        <div class="row">
+            @foreach ($pages as $page)
+                <div class="col-md-3">  <!-- Ensures 4 cards per row -->
+                    <div class="card mb-4" style="width: 100%;"> <!-- Removed fixed width, let Bootstrap handle it -->
+                        <a href="{{ $page->slug }}" style="text-decoration: none" class="text-white">
+                            @if (!empty($page->image))
+                                <img src="{{ asset('storage/' . $page->image) }}" class="card-img-top" alt="Wiki Image">
+                            @endif
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $page->title }}</h5>
+                                @if (!empty($page->subtitle))
+                                    <p class="card-text">{{ $page->subtitle }}</p>
+                                @endif
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </a>
-        @endforeach
+            @endforeach
+        </div>
     </div>
 
 @endsection

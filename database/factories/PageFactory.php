@@ -22,10 +22,14 @@ class PageFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence(4); // Generate a fake title
+
         return [
-            'title' => $this->faker->sentence, // Generate a fake title
-            'slug' => Str::slug($this->faker->sentence), // Generate a slug from the title
-            'markdown' => $this->faker->paragraph, // Generate some markdown content
+            'title' => $title,
+            'subtitle' => $this->faker->sentence, // Generate a short subtitle
+            'slug' => Str::slug($title), // Generate a slug from the title
+            'main_image' => $this->faker->imageUrl(640, 480, 'abstract'), // Generate a placeholder image URL
+            'markdown' => $this->faker->paragraph, // Generate multi-paragraph markdown content
         ];
     }
 }

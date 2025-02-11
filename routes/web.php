@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\WikiController;
 use App\Http\Controllers\PageController;
-use App\Models\Page;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[MainController::class, 'check'])->name("mainkkk");
@@ -55,6 +55,20 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/{slug}', [MarkdownController::class, 'show']);
+Route::post('/upload-image', function (Request $request) {
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('uploads'), $imageName); // Save in public/uploads
+
+        return response()->json([
+            'url' => asset('uploads/' . $imageName) // Return public URL
+        ]);
+    }
+
+    return response()->json(['error' => 'No image uploaded'], 400);
+});
 
 require __DIR__.'/auth.php';
+
+Route::get('/{slug}', [MarkdownController::class, 'show']);
