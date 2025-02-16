@@ -111,6 +111,7 @@ estrutura do site de wiki's:
                             <li><strong>Server Kernel:</strong> <?php echo $larinfo['server']['software']['kernel']; ?></li>
                             <li><strong>Server Webserver:</strong> <?php echo $larinfo['server']['software']['webserver']; ?></li>
                             <li><strong>Server PHP Version:</strong> <?php echo $larinfo['server']['software']['php']; ?></li>
+                            <li><strong>Server Laravel Version:</strong> {{ app()->version() }}</li>
                         </ul>
 
                         <!-- Server Hardware Details -->
