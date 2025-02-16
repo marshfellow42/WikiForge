@@ -87,52 +87,60 @@ estrutura do site de wiki's:
                     <div class="card-body">
                         <h5 class="text-center text-white card-title">Especificações do Sistema</h5>
 
-                        <!-- Host Details -->
+                        <!-- Detalhes do Host -->
                         <ul>
-                            <li><strong>Host City:</strong> <?php echo $larinfo['host']['city']; ?></li>
-                            <li><strong>Host Country:</strong> <?php echo $larinfo['host']['country']; ?></li>
-                            <li><strong>Host IP:</strong> <?php echo $larinfo['host']['ip']; ?></li>
-                            <li><strong>Host Region:</strong> <?php echo $larinfo['host']['region']; ?></li>
-                            <li><strong>Host Timezone:</strong> <?php echo $larinfo['host']['timezone']; ?></li>
+                            <li><strong>Cidade do Host:</strong> <?php echo $larinfo['host']['city']; ?></li>
+                            <li><strong>País do Host:</strong> <?php echo $larinfo['host']['country']; ?></li>
+                            <li><strong>IP do Host:</strong> <?php echo $larinfo['host']['ip']; ?></li>
+                            <li><strong>Região do Host:</strong> <?php echo $larinfo['host']['region']; ?></li>
+                            <li><strong>Fuso Horário do Host:</strong> <?php echo $larinfo['host']['timezone']; ?></li>
                         </ul>
 
-                        <!-- Client Details -->
+                        <!-- Detalhes do Cliente -->
                         <ul>
-                            <li><strong>Client City:</strong> <?php echo $larinfo['client']['city']; ?></li>
-                            <li><strong>Client Country:</strong> <?php echo $larinfo['client']['country']; ?></li>
-                            <li><strong>Client IP:</strong> <?php echo $larinfo['client']['ip']; ?></li>
-                            <li><strong>Client Region:</strong> <?php echo $larinfo['client']['region']; ?></li>
+                            <li><strong>Cidade do Cliente:</strong> <?php echo $larinfo['client']['city']; ?></li>
+                            <li><strong>País do Cliente:</strong> <?php echo $larinfo['client']['country']; ?></li>
+                            <li><strong>IP do Cliente:</strong> <?php echo $larinfo['client']['ip']; ?></li>
+                            <li><strong>Região do Cliente:</strong> <?php echo $larinfo['client']['region']; ?></li>
                         </ul>
 
-                        <!-- Server Details -->
+                        <!-- Detalhes do Servidor -->
                         <ul>
-                            <li><strong>Server OS:</strong> <?php echo $larinfo['server']['software']['os']; ?></li>
-                            <li><strong>Server Distro:</strong> <?php echo $larinfo['server']['software']['distro']; ?></li>
-                            <li><strong>Server Kernel:</strong> <?php echo $larinfo['server']['software']['kernel']; ?></li>
-                            <li><strong>Server Webserver:</strong> <?php echo $larinfo['server']['software']['webserver']; ?></li>
-                            <li><strong>Server PHP Version:</strong> <?php echo $larinfo['server']['software']['php']; ?></li>
-                            <li><strong>Server Laravel Version:</strong> {{ app()->version() }}</li>
+                            <li><strong>Sistema Operacional do Servidor:</strong> <?php echo $larinfo['server']['software']['os']; ?></li>
+                            <li><strong>Distribuição do Servidor:</strong> <?php echo $larinfo['server']['software']['distro']; ?></li>
+                            <li><strong>Kernel do Servidor:</strong> <?php echo $larinfo['server']['software']['kernel']; ?></li>
+                            <li><strong>Servidor Web:</strong> <?php echo $larinfo['server']['software']['webserver']; ?></li>
+                            <li><strong>Versão do PHP no Servidor:</strong> <?php echo $larinfo['server']['software']['php']; ?></li>
+                            <li><strong>Versão do Laravel no Servidor:</strong> {{ app()->version() }}</li>
                         </ul>
 
-                        <!-- Server Hardware Details -->
+                        <!-- Detalhes de Hardware do Servidor -->
                         <ul>
-                            <li><strong>Server CPU:</strong> <?php echo $larinfo['server']['hardware']['cpu']; ?></li>
-                            <li><strong>Server RAM:</strong> <?php echo $larinfo['server']['hardware']['ram']['human_total']; ?></li>
-                            <li><strong>Server RAM Free:</strong> <?php echo $larinfo['server']['hardware']['ram']['human_free']; ?></li>
-                            <li><strong>Server Disk Total:</strong> <?php echo $larinfo['server']['hardware']['disk']['human_total']; ?></li>
-                            <li><strong>Server Disk Free:</strong> <?php echo $larinfo['server']['hardware']['disk']['human_free']; ?></li>
+                            <li><strong>CPU do Servidor:</strong> <?php echo $larinfo['server']['hardware']['cpu']; ?></li>
+                            <li><strong>Memória RAM Total do Servidor:</strong> <?php echo $larinfo['server']['hardware']['ram']['human_total']; ?></li>
+                            <li><strong>Memória RAM Livre do Servidor:</strong> <?php echo $larinfo['server']['hardware']['ram']['human_free']; ?></li>
+                            <li><strong>Disco Total do Servidor:</strong> <?php echo $larinfo['server']['hardware']['disk']['human_total']; ?></li>
+                            <li><strong>Disco Livre do Servidor:</strong> <?php echo $larinfo['server']['hardware']['disk']['human_free']; ?></li>
                         </ul>
 
-                        <!-- Server Uptime -->
+                        <!-- Tempo de Atividade do Servidor -->
                         <ul>
-                            <li><strong>Server Uptime:</strong> <?php echo $larinfo['server']['uptime']['uptime']; ?></li>
-                            <li><strong>Server Booted At:</strong> <?php echo $larinfo['server']['uptime']['booted_at']; ?></li>
+                            <li><strong>Tempo de Atividade do Servidor:</strong>
+                                <?php
+                                    echo str_replace(
+                                        ['hours', 'minutes', 'seconds'],
+                                        ['horas', 'minutos', 'segundos'],
+                                        $larinfo['server']['uptime']['uptime']
+                                    );
+                                ?>
+                            </li>
+                            <li><strong>Servidor Inicializado Em:</strong> <?php echo $larinfo['server']['uptime']['booted_at']; ?></li>
                         </ul>
 
-                        <!-- Database Details -->
+                        <!-- Detalhes do Banco de Dados -->
                         <ul>
-                            <li><strong>Database Driver:</strong> <?php echo $larinfo['database']['driver']; ?></li>
-                            <li><strong>Database Version:</strong> <?php echo $larinfo['database']['version']; ?></li>
+                            <li><strong>Driver do Banco de Dados:</strong> <?php echo $larinfo['database']['driver']; ?></li>
+                            <li><strong>Versão do Banco de Dados:</strong> <?php echo $larinfo['database']['version']; ?></li>
                         </ul>
 
                     </div>
