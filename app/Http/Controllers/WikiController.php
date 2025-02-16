@@ -6,6 +6,7 @@ use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Matriphe\Larinfo\LarinfoFacade;
 
 class WikiController extends Controller
 {
@@ -34,9 +35,12 @@ class WikiController extends Controller
     {
         $user = Auth::user(); // Get the authenticated user
         $users = User::all();
+        $pages = Page::all();
+
+        $larinfo = LarinfoFacade::getInfo();
 
         if ($user && $user->role == "admin") {
-            return view('wiki.info', compact('users'));
+            return view('wiki.info', compact('users', 'pages', 'larinfo'));
         } else {
             return redirect('/')->with('error', 'Access denied.');
         }
