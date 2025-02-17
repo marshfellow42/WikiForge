@@ -66,24 +66,13 @@ estrutura do site de wiki's:
                         <td>{{ $user->role }}</td>
 
                         <td>
-                            <form action="editar_usuarios.php" method="post" style="display: inline;">
-                                <input type="hidden" name="email" value="">
-                                <button class="btn btn-sm btn-warning" title="Editar">
-                                    <x-bi-pencil-fill />
-                                </button>
-                            </form>
-
-                            <form action="php/funcao-admin-sistema-excluir-usuarios.php" method="post"
-                                style="display: inline;">
-                                <input type="hidden" name="email" value="">
-                                <button class="btn btn-sm btn-danger" title="Excluir">
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?');">
                                     <x-bi-trash-fill />
                                 </button>
                             </form>
-
-                            <button class="btn btn-sm btn-secondary" title="Visualizar" style="display: inline;">
-                                <x-bi-eye-fill />
-                            </button>
                         </td>
 
                     </tr>

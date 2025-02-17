@@ -53,7 +53,7 @@ estrutura do site de wiki's:
                 <th> id </th>
                 <th> Título </th>
                 <th> Link </th>
-                <th> Markdown </th>
+                {{-- <th> Markdown </th> --}}
                 <th> Ações </th>
             </thead>
             <tbody>
@@ -62,27 +62,21 @@ estrutura do site de wiki's:
                         <td>{{ $page->id }}</td>
                         <td>{{ $page->title }}</td>
                         <td><a href="/{{ $page->slug }}">{{ $page->slug }}</a></td>
-                        <td>{{ $page->markdown }}</td>
-
+                        {{-- <td>{{ $page->markdown }}</td> --}}
                         <td>
-                            <form action="editar_usuarios.php" method="post" style="display: inline;">
-                                <input type="hidden" name="email" value="">
+                            <form action="{{ route('pages.edit_page', $page->id) }}" method="GET" style="display: inline;">
                                 <button class="btn btn-sm btn-warning" title="Editar">
                                     <x-bi-pencil-fill />
                                 </button>
                             </form>
 
-                            <form action="php/funcao-admin-sistema-excluir-usuarios.php" method="post"
-                                style="display: inline;">
-                                <input type="hidden" name="email" value="">
-                                <button class="btn btn-sm btn-danger" title="Excluir">
+                            <form action="{{ route('pages.destroy', $page->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta página?');">
                                     <x-bi-trash-fill />
                                 </button>
                             </form>
-
-                            <button class="btn btn-sm btn-secondary" title="Visualizar" style="display: inline;">
-                                <x-bi-eye-fill />
-                            </button>
                         </td>
 
                     </tr>
@@ -94,7 +88,7 @@ estrutura do site de wiki's:
                 <th> id </th>
                 <th> Título </th>
                 <th> Link </th>
-                <th> Markdown </th>
+                {{-- <th> Markdown </th> --}}
                 <th> Ações </th>
             </tfoot>
 

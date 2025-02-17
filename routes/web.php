@@ -45,11 +45,17 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/wiki/info', [WikiController::class, 'show'])->middleware('auth');
-Route::get('/wiki/creator', [WikiController::class, 'create'])->middleware('auth');
-Route::get('/wiki/users', [WikiController::class, 'observe'])->middleware('auth');
+Route::get('/wiki/creator', [WikiController::class, 'create'])->middleware('auth')->name('wiki.creator');
+Route::get('/wiki/users', [WikiController::class, 'observe'])->middleware('auth')->name('wiki.users');
+
 Route::get('/wiki/create_page', [WikiController::class, 'create_new_page'])->middleware('auth');
+Route::get('/wiki/edit_page/{id}', [WikiController::class, 'edit_page'])->middleware('auth')->name('pages.edit_page');
+
+Route::delete('/wiki/users/{id}', [WikiController::class, 'destroy_user'])->name('users.destroy');
+Route::delete('/wiki/creator/{id}', [WikiController::class, 'destroy_page'])->name('pages.destroy');
 
 Route::post('/wiki/save', [PageController::class, 'store'])->name('wiki.save');
+Route::put('/wiki/update/{id}', [PageController::class, 'update'])->name('wiki.update');
 
 Route::get('/about', function () {
     return view('about');
@@ -58,8 +64,8 @@ Route::get('/about', function () {
 Route::post('/upload-image', function (Request $request) {
     if ($request->hasFile('image')) {
         $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('uploads'), $imageName); // Save in public/uploads
+        $imageName = urlencode(time() . '_' . $image->getClientOriginalName());
+        $image->move(public_path('uploads'), $imageName);
 
         return response()->json([
             'url' => asset('uploads/' . $imageName) // Return public URL

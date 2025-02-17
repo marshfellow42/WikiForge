@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Matriphe\Larinfo\LarinfoFacade;
@@ -56,5 +57,34 @@ class WikiController extends Controller
     {
         $pages = Page::all();
         return view('wiki.creator.create_page', compact('pages'));
+    }
+
+    public function edit_page($id)
+    {
+        $page = Page::findOrFail($id);
+        return view('wiki.creator.edit_page', compact('page'));
+    }
+
+    public function destroy_user($id)
+    {
+        $user = User::findOrFail($id);
+
+        // Verifica se o usuário não está tentando se excluir ou excluir um admin principal (opcional)
+        if (Auth::user()->id == $user->id) {
+            return redirect()->back()->with('error', 'Você não pode excluir a si mesmo.');
+        }
+
+        $user->delete();
+
+        return redirect()->route('wiki.users')->with('success', 'Usuário excluído com sucesso!');
+    }
+
+    public function destroy_page($id)
+    {
+        $page = Page::findOrFail($id);
+
+        $page->delete();
+
+        return redirect()->route('wiki.creator')->with('success', 'Página excluída com sucesso!');
     }
 }
