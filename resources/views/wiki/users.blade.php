@@ -24,15 +24,17 @@ estrutura do site de wiki's:
 
 - --}}
 
-@extends('layouts.main')
+@extends('layouts.dashboard')
 @section('title', 'Usuários')
 @section('content')
 
     <div class="mt-3 col-md-3">
         <nav class="sidebar">
-            <a href="/wiki/info"><x-bi-house-fill class="mb-1" /> Home</a>
             <a href="/wiki/creator"><x-bi-files class="mb-1" /> Páginas</a>
-            <a href="/wiki/users"><x-bi-eye-fill class="mb-1" /> Usuários</a>
+            @if (Auth::user()->role == 'admin')
+                <a href="/wiki/users"><x-bi-eye-fill class="mb-1" /> Usuários</a>
+                <a href="/wiki/info"><x-bi-info-circle-fill class="mb-1" /> Informações</a>
+            @endif
         </nav>
     </div>
 
@@ -64,24 +66,13 @@ estrutura do site de wiki's:
                         <td>{{ $user->role }}</td>
 
                         <td>
-                            <form action="editar_usuarios.php" method="post" style="display: inline;">
-                                <input type="hidden" name="email" value="">
-                                <button class="btn btn-sm btn-warning" title="Editar">
-                                    <x-bi-pencil-fill />
-                                </button>
-                            </form>
-
-                            <form action="php/funcao-admin-sistema-excluir-usuarios.php" method="post"
-                                style="display: inline;">
-                                <input type="hidden" name="email" value="">
-                                <button class="btn btn-sm btn-danger" title="Excluir">
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?');">
                                     <x-bi-trash-fill />
                                 </button>
                             </form>
-
-                            <button class="btn btn-sm btn-secondary" title="Visualizar" style="display: inline;">
-                                <x-bi-eye-fill />
-                            </button>
                         </td>
 
                     </tr>
